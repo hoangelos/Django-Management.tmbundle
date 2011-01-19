@@ -11,6 +11,11 @@
 
 export TM_RUBY=$(type -p "${TM_RUBY:-ruby}")
 
+export TM_VIRTUALENV=$(cat ${TM_PROJECT_DIRECTORY}/.venv)
+source /usr/local/bin/virtualenvwrapper.sh
+workon ${TM_VIRTUALENV}
+export TM_PYTHON=`which python`
+
 "${TM_RUBY}" -KU -- "$TM_BUNDLE_SUPPORT/run_server.rb" testserver "$TM_SELECTED_FILES"
 </string>
 	<key>input</key>
